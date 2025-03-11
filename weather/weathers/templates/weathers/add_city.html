@@ -1,0 +1,22 @@
+{% extends "main.html" %}
+{% block content %}
+
+    <form method="POST">
+        {% csrf_token %}
+        <label for="name">Miesto pavadinimas: </label>
+        <input id="name" type="text" name="name">
+        <br>
+        <label for="country">Šalis: </label>
+        <input id="country" type="text" name="country">
+        <br>
+        <label for="latitude">x: </label>
+        <input id="latitude" type="number" name="latitude">
+        <br>
+        <label for="longitude">y: </label>
+        <input id="longitude" type="number" name="longitude">
+        <br>
+        <input class="submit" type="submit" value="Add">
+    </form>
+
+
+{% endblock %}

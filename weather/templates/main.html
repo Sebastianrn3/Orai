@@ -1,0 +1,18 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Orai</title>
+    <link rel="stylesheet" href="{% static 'styles/main.css' %}">
+</head>
+<body>
+    {% include "navbar.html" %}
+    <br>
+    <section class="container">
+    {% block content %}
+
+    {% endblock %}
+    </section>
+</body>
+</html>

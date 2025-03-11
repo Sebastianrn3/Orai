@@ -1,0 +1,25 @@
+{% extends "main.html" %}
+
+{% block content %}
+<h2>Miestų sąrašas</h2>
+
+<table border="1">
+    <tr>
+        <th>Miestas</th>
+        <th>Ilguma, platuma</th>
+        <th>Veiksmai</th>
+    </tr>
+    {% for city in cities %}
+    <tr>
+        <td>{{ city.name }}</td>
+        <td>{{ city.latitude }}, {{ city.longitude }}</td>
+        <td>
+            <form action="{% url 'weathers:delete_city' city.id %}" method="POST">
+                {% csrf_token %}
+                <button type="submit">Šalinti</button>
+            </form>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

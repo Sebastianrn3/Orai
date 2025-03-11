@@ -1,0 +1,16 @@
+{% extends "main.html" %}
+{% block content %}
+    {% if cities %}
+        <ul>
+        {% for city in cities %}
+            <li>
+                <a href="{% url 'weathers:city' city.id %}">
+                {{ city.name }}<br>
+                </a>
+            </li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>Miestų nerasta.</p>
+    {% endif %}
+{% endblock %}

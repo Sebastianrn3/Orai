@@ -1,0 +1,63 @@
+body {
+    /*font-family: ArialSegoe UI, Tahoma, Arial;*/
+    font-size: 24px;
+    letter-spacing: 2px;
+    background-image: url("https://r4.wallpaperflare.com/wallpaper/19/415/594/lithuania-vilnius-the-rain-hd-wallpaper-9a99cdfb29b1c6a6fc91794637fa32e7.jpg");
+    background-size: cover;
+    color: rgb(255, 255, 255);
+}
+
+h1 {
+    font-size: 54px;
+    color: rgb(212, 212, 212);
+}
+
+header {
+    width: 100%;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    backdrop-filter: blur(50px);
+}
+
+ul {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    list-style: none;
+    padding: 10px;
+    margin: 0;
+
+}
+.container{
+    grid-template-columns: 30vw 30vw 30vw;
+}
+.cityCard{
+    width: 30vw;
+    height: 30vw;
+    margin: 10px auto;
+    background-color: rgba(127, 153, 255, 0.38);
+    backdrop-filter: blur(50px);
+
+}
+
+a:hover:not(.citiesButton> a){
+    background-color: #1a4c53c2;
+    color: #ffffff;
+}
+a, button{
+    text-decoration: none;
+    padding: 10px;
+    color: rgb(212, 212, 212);
+}
+
+.citiesButton:hover {background-color: rgb(16, 0, 41);}
+.citiesButton > a {color: inherit;}
+.citiesButton, .submit {
+    padding: 10px;
+    background-color: #054c8d3f;
+    color: rgb(255, 255, 255);
+}
+
