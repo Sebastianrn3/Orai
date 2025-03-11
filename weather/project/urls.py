@@ -20,7 +20,7 @@ from .views import home
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path("weathers/", include("weathers.urls")),
+    path("orai/", include("weathers.urls")),
     path('admin/', admin.site.urls),
     path('',  home, name='home'),
 ]

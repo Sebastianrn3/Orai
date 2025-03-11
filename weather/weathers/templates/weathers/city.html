@@ -1,17 +1,12 @@
 {% extends "main.html" %}
 {% block content %}
 <div>
-    {{ city.name }}
-    <br>
+    <h3>{{ city.name }}</h3>
     <p>Dabartinė oro temperatūra: {{ temperature }}°C</p>
     <p>Vėjo greitis: {{ wind_speed }} km/h</p>
 
-
+    <a href="{% url 'weathers:edit_city' city.id %}">Redaguoti</a>
     <a href="{% url 'weathers:delete_city' city.id %}">Ištrinti miestą</a>
-<!--    <form action="{% url 'weathers:delete_city' city.id %}" method="POST">-->
-<!--        {% csrf_token %}-->
-<!--        <input class="submit" type="submit" value="Ištrinti">-->
-<!--    </form>-->
 </div>
 {% endblock %}
 

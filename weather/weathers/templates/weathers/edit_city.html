@@ -1,0 +1,12 @@
+{% extends "main.html" %}
+
+{% block content %}
+<div class="editCityContainer">
+    <h2>Redaguoti miestą: {{ city.name }}</h2>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Išsaugoti</button>
+    </form>
+</div>
+{% endblock %}

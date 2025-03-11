@@ -1,7 +1,28 @@
 {% extends "main.html" %}
+{% load static %}
+
 {% block content %}
-    <div class="cityCard">
-<!--        <video class="jw-video jw-reset" tabindex="-1" playsinline="" src="blob:https://www.delfi.lt/20d1f13a-423a-42c4-8be7-25630b7994a1"></video>-->
-        <h1>Homepage korteles šanblonas</h1>
+<link rel="stylesheet" href="{% static 'styles/homepage.css' %}">
+<script src="script.js"></script>
+<script src="{% static 'javascripts/homepage.js' %}" defer></script>
+
+<form class="homeForm center noBG">
+    <div class="inputs noBG">
+        <input type="text" id="titleInput" placeholder="Antraštė" hidden>
+        <input type="text" id="noteInput" placeholder="Surašyti užduotį...">
     </div>
+    <div class="buttons">
+        <button type="submit">Įsiminti</button>
+        <button id="cancelBtn" hidden>Atšaukti</button>
+    </div>
+</form>
+<br>
+<h2>Darbų sąrašas:</h2>
+<div class="noteContainer">
+</div>
+
+
+<!--    <div class="homepageCard">-->
+<!--        <h1>Homepage korteles šanblonas</h1>-->
+<!--    </div>-->
 {% endblock %}

@@ -1,0 +1,90 @@
+body {
+    padding: 10px;
+}
+.homeForm > div{
+    backdrop-filter: none;
+    background-color: none;
+}
+
+
+form, .inputs, body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+input{
+    min-width: 350px;
+    padding: 5px;
+    border: none;
+    border-style: none;
+    color: #000000a6;
+}
+input:focus{
+    outline: none;
+    font-weight: bold;
+}
+.buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+button{
+    width: 200px;
+    background-color: rgb(43, 36, 148);
+    border: none;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.5);
+    font-weight: bold;
+    color: #00000098;
+}
+button:hover{
+    background-color: rgb(62, 143, 219);
+    cursor: pointer;
+}
+.noteContainer > div > div:hover{
+    cursor: pointer;
+    background-color: rgba(245, 75, 75, 0.5);
+}
+#cancelBtn{
+    background-color: rgb(238, 157, 157);
+    color: white;
+}
+#cancelBtn:hover{
+    background-color: rgb(219, 61, 61);
+}
+button, input{
+    margin: 5px;
+    min-height: 30px;
+    max-width: 50%;
+}
+.noteContainer {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.noBG{
+    background-color: none;
+}
+
+.noteContainer > div{
+    color: #000000af;
+    width: 250px;
+    height: 250px;
+    margin: 20px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.5);
+    padding: 20px;
+    position: relative;
+}
+.noteContainer > div > div{
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    padding: 3%;
+}
+
+@media screen and (min-width: 768px) {
+    form{flex-direction: row;}
+    .buttons{flex-direction: column;}
+}

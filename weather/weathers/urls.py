@@ -5,8 +5,12 @@ app_name = 'weathers'
 
 urlpatterns = [
     path('', views.cities, name='cities'),
+    path("<slug:slug>/", views.detail, name="city"),
     path("<int:pk>", views.detail, name="city"),
     path("add", views.add_city, name="add_city"),
+    path("edit/<int:pk>", views.edit_city, name="edit_city"),
     path("delete/<int:pk>", views.delete_city, name="delete_city"),
     path("summary", views.summary, name="summary"),
+    path("update_weather/<int:pk>/", views.update_weather, name="update_weather"),
+
 ]

@@ -1,10 +1,66 @@
 body {
     /*font-family: ArialSegoe UI, Tahoma, Arial;*/
+
+    min-height: 100vh;
+    margin: 0;
     font-size: 24px;
     letter-spacing: 2px;
     background-image: url("https://r4.wallpaperflare.com/wallpaper/19/415/594/lithuania-vilnius-the-rain-hd-wallpaper-9a99cdfb29b1c6a6fc91794637fa32e7.jpg");
     background-size: cover;
     color: rgb(255, 255, 255);
+}
+
+.center {
+    margin: auto;
+    width: 50%;
+    box-shadow: 0 30px 40px rgba(0,0,0,.1);
+    padding: 10px;
+}
+.noBG{
+    background-color: none;
+}
+
+div{
+    backdrop-filter: blur(50px);
+    /* background-color: #1a4c53c2; */
+    background-color: #1a4c5325;
+    padding: 30px;
+}
+
+.cityButtons > a{
+    padding: 0;
+}
+
+.addCityContainer > form{
+    padding: 10px;
+    display: flex;
+    color: blue;
+    margin: 0;
+    flex-direction: column;
+}
+
+.addCityContainer > form > input{
+    color: rgba(5, 5, 22, 0.726);
+    font-size: 20px;
+}
+
+.addCityContainer > form > .submit{
+    color: white;
+    max-width: 50%;
+    align-self: center;
+}
+
+.addCityContainer *{
+    padding: 10px;
+    color: azure;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.cityButtons{
+    display: inline-flex;
+    color: rgba(5, 5, 22, 0.726);
 }
 
 h1 {
@@ -33,13 +89,15 @@ ul {
 }
 .container{
     grid-template-columns: 30vw 30vw 30vw;
+    color: #2a2c3b;
+
 }
-.cityCard{
-    width: 30vw;
-    height: 30vw;
+.homepageCard{
+    width: 40vw;
+    height: 40vw;
     margin: 10px auto;
-    background-color: rgba(127, 153, 255, 0.38);
-    backdrop-filter: blur(50px);
+    background-color: rgba(127, 153, 255, 0.39);
+    backdrop-filter: blur(30px);
 
 }
 

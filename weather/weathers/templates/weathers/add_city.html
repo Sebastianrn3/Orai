@@ -1,22 +1,23 @@
 {% extends "main.html" %}
 {% block content %}
-
+<div class="addCityContainer center">
     <form method="POST">
         {% csrf_token %}
         <label for="name">Miesto pavadinimas: </label>
-        <input id="name" type="text" name="name">
-        <br>
-        <label for="country">Šalis: </label>
-        <input id="country" type="text" name="country">
-        <br>
-        <label for="latitude">x: </label>
-        <input id="latitude" type="number" name="latitude">
-        <br>
-        <label for="longitude">y: </label>
-        <input id="longitude" type="number" name="longitude">
-        <br>
-        <input class="submit" type="submit" value="Add">
-    </form>
+        <input id="name" type="text" placeholder="pvz. Vilnius" name="name">
 
+        <label for="country">Šalis:</label>
+        <input id="country" value="Lietuva" type="text" name="country">
+
+        <label for="latitude">Ilguma: </label>
+        <input id="latitude" type="number" placeholder="pvz. 54.6872" name="latitude">
+
+        <label for="longitude">Platuma: </label>
+        <input id="longitude" type="number" placeholder="pvz. 25.2797" name="longitude">
+
+        <br>
+        <input class="submit" type="submit" value="Pridėti miestą">
+    </form>
+</div>
 
 {% endblock %}
