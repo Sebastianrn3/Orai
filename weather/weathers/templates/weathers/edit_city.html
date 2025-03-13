@@ -1,12 +1,20 @@
 {% extends "main.html" %}
+{% load static %}
 
 {% block content %}
+
+<script src="{% static 'javascripts/add_city_suggest_coordinates.js' %}" defer></script>
 <div class="editCityContainer">
     <h2>Redaguoti miestą: {{ city.name }}</h2>
+
+    <br>
+    <button type="button" onclick="fetchCoordinates()" class="submit">Surasti koordinates pagal įvestą miestą</button>
+
     <form method="POST">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">Išsaugoti</button>
+        <button class="cityButtons submit" type="submit">Išsaugoti</button>
     </form>
 </div>
+
 {% endblock %}

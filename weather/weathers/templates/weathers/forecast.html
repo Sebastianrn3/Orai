@@ -1,15 +1,8 @@
 {% extends "main.html" %}
-{% block content %}
-<div class="center">
-    <h3>{{ city.name }}</h3>
-    <p>Dabartinė oro temperatūra: {{ temperature }}°C</p>
-    <p>Vėjo greitis: {{ wind_speed }} km/h</p>
 
-    <a href="{% url 'weathers:edit_city' city.id %}">Redaguoti</a>
-    <a href="{% url 'weathers:delete_city' city.id %}">Ištrinti miestą</a>
-</div>
+{% block content %}
 <div class="forecast center">
-    <h2 class="center">Orų prognozė: {{ city.name }}</h2>
+    <h2 class="center">Orų prognozė: Vilnius</h2>
     <table class="center" border="1">
         <tr>
             <th>Kada</th>
@@ -29,4 +22,3 @@
 </div>
 
 {% endblock %}
-

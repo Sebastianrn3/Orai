@@ -9,7 +9,6 @@
 <h4>Ištrinti miestą?</h4>
     <form method="POST">
         {% csrf_token %}
-<!--        <input class="submit" type="submit" value="Ištrinti!">-->
         <button class="submit" type="submit">Ištrinti!</button>
         <a href="{% url 'weathers:cities' %}">Atšaukti</a>
     </form>

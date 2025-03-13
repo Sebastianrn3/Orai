@@ -1,10 +1,11 @@
 <header>
-  <h1>LROrai</h1>
+  <a href="{% url 'home' %}"><h1>LROrai</h1></a>
   <nav class="menu">
     <ul class="sidebar">
       <li><a href="{% url 'home' %}">Pagrindinis</a></li>
       <li><a href="{% url 'weathers:cities' %}">Miestai</a></li>
       <li><a href="{% url 'weathers:summary' %}">Orų suvestinė</a></li>
+      <li><a href="{% url 'weathers:forecast' %}">Orų prognozės</a></li>
       <li><a href="{% url 'weathers:add_city' %}">Pridėti miestą</a></li>
     </ul>
   </nav>

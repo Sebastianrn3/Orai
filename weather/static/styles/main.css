@@ -10,9 +10,11 @@ body {
     color: rgb(255, 255, 255);
 }
 
+
+
 .center {
     margin: auto;
-    width: 50%;
+    width: 60%;
     box-shadow: 0 30px 40px rgba(0,0,0,.1);
     padding: 10px;
 }

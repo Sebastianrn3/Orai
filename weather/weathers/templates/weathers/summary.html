@@ -32,13 +32,16 @@
             <td class="cityButtons">
                 <form action="{% url 'weathers:delete_city' city.id %}" method="POST">
                     {% csrf_token %}
-                    <button type="submit">Šalinti</button>
+                    <button class="submit" type="submit">Šalinti</button>
                 </form>
                 <a href="{% url 'weathers:edit_city' city.id %}">
-                    <button type="button">Redaguoti</button>
+                    <button class="submit" type="button">Redaguoti</button>
                 </a>
                 <a href="{% url 'weathers:update_weather' city.id %}">
-                    <button type="button">Atnaujinti</button>
+                    <button class="submit" type="button">Atnaujinti</button>
+                </a>
+                <a href="{% url 'weathers:city' city.id %}">
+                    <button class="submit" type="button">Plačiau</button>
                 </a>
             </td>
         </tr>
