@@ -32,21 +32,19 @@ class City(models.Model):
     latitude = models.FloatField(default=0)
     longitude = models.FloatField(default=0)
 
-    def __str__(self):
-        return f'{self.name} in {administrative_division},{self.country}, coordination: {self.latitude}, {self.longitude}'
+    class Meta:
+        ordering = ["name"]
 
+    def __str__(self):
+        return f'{self.name} in {self.administrative_division},{self.country}, coordination: {self.latitude}, {self.longitude}'
 
 class CitySlug(models.Model):
     city = models.OneToOneField(City, on_delete=models.CASCADE)
-    slug = models.SlugField(unique=True)
+    slug = models.SlugField()
 
-    def save(self, *args, **kwargs):
+    def save(self):
         if not self.slug:
             self.slug = slugify(self.city.name)
-        super().save(*args, **kwargs)
-
-    def __str__(self):
-        return f"{self.city.name} ({self.slug})"
 
 
 class CityWeathers(models.Model):

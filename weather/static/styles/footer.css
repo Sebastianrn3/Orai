@@ -1,0 +1,10 @@
+.footer {
+    color: white;
+    text-align: center;
+    padding: 5px;
+    bottom: 0;
+    width: 100%;
+    font-size: 14px;
+    backdrop-filter: blur(50px);
+    background-color: #1a4c5325;
+}

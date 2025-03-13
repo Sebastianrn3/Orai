@@ -2,40 +2,39 @@
 
 {% block content %}
 <div>
-    <h1>Orai {{ city }}</h1>
+    <h2 class="beige">
+        {{ city.name }}
+        {% if city.administrative_division %}, {{ city.administrative_division }}{% endif %}
+        {% if city.country %}, {{ city.country }}{% endif %}
+    </h2>
+    <p class="beige">Dabartinė oro temperatūra: {{ temperature }}°C</p>
+    <p class="beige">Vėjo greitis: {{ wind_speed }} km/h</p>
 
-    <div class="center">
-        <h2>Dabar:</h2>
-        {% if current_weather %}
-            <p>Temperatūra: {{ current_weather.airTemperature }}°C</p>
-            <p>Vėjas: {{ current_weather.windSpeed }} m/s</p>
-            <p>Būdas: {{ current_weather.conditionCode }}</p>
-        {% else %}
-            <p>No data</p>
-        {% endif %}
-    </div>
 
+    <a class="border" href="{% url 'weathers:edit_city' city.id %}">Redaguoti</a>
+    <a class="border" href="{% url 'weathers:delete_city' city.id %}">Ištrinti miestą</a>
+    <a class="border" href="{% url 'weathers:city' city.id %}">Originalus lentelės formatas</a>
+
+    <br>
+    <p>Duomenų šaltinis: open-meteo.com</p>
     <section>
-        <h2>Šiandien:</h2>
-        <ul>
-            {% for f in hourly_forecast %}
-                <li>{{ f.forecastTimeUtc }} - {{ f.airTemperature }}°C, v {{ f.windSpeed }} m/s</li>
-                <br>
-            {% endfor %}
-        </ul>
-    </section>
+        <table class="center weeklyForecastTable">
+            <tr>
+              <th class="night">Naktis (02:00)</th>
+              <th class="morning">Rytas (08:00)</th>
+              <th class="afternoon">Diena (14:00)</th>
+              <th class="evening">Vakaras (20:00)</th>
+            </tr>
 
-    <section>
-        <h2>Savaitei:</h2>
-
+        </table>
         {% for date, times in weekly_forecast.items %}
         <h3 class="center">{{ date }}</h3>
-        <table class="center">
+        <table class="center weeklyForecastTable">
             <tr>
-              <th>oro temp.,°C</th>
-              <th>vėjo greitis, m/s</th>
-              <th>santikinys drėgnis</th>
-              <th>oras</th>
+              <th>Oro temp.,°C</th>
+              <th>Vėjo greitis, m/s</th>
+              <th>Santikinys drėgnis</th>
+              <th>Oras</th>
             </tr>
             
             <tr class="night">

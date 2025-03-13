@@ -15,5 +15,6 @@ urlpatterns = [
     path("get_place_data/", views.get_place_data, name="get_place_data"),
     path("<slug:slug>/", views.detail, name="city"),
     path("<int:pk>", views.detail, name="city"),
+    # path("<int:pk>", views.detail, name="city_forecast_table"),
 
 ]

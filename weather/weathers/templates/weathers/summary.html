@@ -8,19 +8,14 @@
         <tr>
             <th>Miestas</th>
             <th>Ilguma, platuma</th>
-
-
             <th>Temperatūra</th>
             <th>Vėjo greitis</th>
             <th>Atnaujinta</th>
-
             <th>Veiksmai</th>
         </tr>
         {% for city in cities %}
         <tr>
-            <td>
-                <a href="{% url 'weathers:city' city.id %}">{{ city.name }}</a>
-            </td>
+            <td><a href="{% url 'weathers:city' city.id %}" class="darkColor">{{ city.name }}</a></td>
             <td>{{ city.latitude }}, {{ city.longitude }}</td>
 
             {% with weather=city.cityweathers_set.last %}

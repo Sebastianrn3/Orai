@@ -1,4 +1,3 @@
-from django.contrib.sites import requests
 import requests
 
 # latitude = 54.68

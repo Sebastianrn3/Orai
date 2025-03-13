@@ -1,6 +1,4 @@
 body {
-    /*font-family: ArialSegoe UI, Tahoma, Arial;*/
-
     min-height: 100vh;
     margin: 0;
     font-size: 24px;
@@ -8,28 +6,50 @@ body {
     background-image: url("https://r4.wallpaperflare.com/wallpaper/19/415/594/lithuania-vilnius-the-rain-hd-wallpaper-9a99cdfb29b1c6a6fc91794637fa32e7.jpg");
     background-size: cover;
     color: rgb(255, 255, 255);
+
+}
+
+.footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+
+td{
+    text-align: center;
 }
 
 .center {
     margin: auto;
-    width: 60%;
+    max-width: 60%;
+    min-width: 50%;
     box-shadow: 0 30px 40px rgba(0,0,0,.1);
     padding: 10px;
 }
-.noBG{
-    background-color: none;
+
+.center-2 {
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    max-width: 60%;
+    min-width: 20%;
+    padding: 0 auto;
+}
+
+.noBG{background-color: none;}
+
+table{
+    background-color: rgba(240, 255, 255, 0.397);
 }
 
 div{
     backdrop-filter: blur(50px);
-    /* background-color: #1a4c53c2; */
     background-color: #1a4c5325;
     padding: 30px;
 }
 
-.cityButtons > a{
-    padding: 0;
-}
+.cityButtons > a{padding: 0;}
 
 .addCityContainer > form{
     padding: 10px;
@@ -58,6 +78,8 @@ div{
     flex-direction: column;
 }
 
+.darkColor{color: #2a2c3b;}
+
 .cityButtons{
     display: inline-flex;
     color: rgba(5, 5, 22, 0.726);
@@ -85,26 +107,26 @@ ul {
     list-style: none;
     padding: 10px;
     margin: 0;
-
 }
+
 .container{
     grid-template-columns: 30vw 30vw 30vw;
     color: #2a2c3b;
-
 }
+
 .homepageCard{
     width: 40vw;
     height: 40vw;
     margin: 10px auto;
     background-color: rgba(127, 153, 255, 0.39);
     backdrop-filter: blur(30px);
-
 }
 
 a:hover:not(.citiesButton> a){
     background-color: #1a4c53c2;
     color: #ffffff;
 }
+
 a, button{
     text-decoration: none;
     padding: 10px;
@@ -120,27 +142,28 @@ a, button{
 }
 
 
-.red{
-    color: red;
-}
+.red{color: red;}
+.beige{ color: beige;}
 
-.inline{
-    display: inline;
-}
+.inline{display: inline;}
+
+.border{border: solid 1px rgba(255, 255, 255, 0.377);}
+
 
 .night{
-    background-color: rgba(23, 15, 128, 0.671);
+    background-color: rgba(23, 15, 128, 0.466);
     color: yellow;
 }
 .morning{
-    background-color: rgba(56, 230, 236, 0.712);
+    background-color: rgba(56, 230, 236, 0.459);
     color: rgba(26, 5, 121, 0.568);
 }
 .afternoon{
-    background-color: rgb(15, 120, 128);
+    background-color: rgba(15, 120, 128, 0.479);
     color: yellow;
 }
 .evening{
-    background-color: rgb(221, 115, 29);
-    color: rgb(255, 0, 0);
+    background-color: rgba(221, 115, 29, 0.473);
+    color: rgb(80, 0, 0);
+    padding: 50px;
 }
