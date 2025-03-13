@@ -10,8 +10,6 @@ body {
     color: rgb(255, 255, 255);
 }
 
-
-
 .center {
     margin: auto;
     width: 60%;
@@ -121,3 +119,28 @@ a, button{
     color: rgb(255, 255, 255);
 }
 
+
+.red{
+    color: red;
+}
+
+.inline{
+    display: inline;
+}
+
+.night{
+    background-color: rgba(23, 15, 128, 0.671);
+    color: yellow;
+}
+.morning{
+    background-color: rgba(56, 230, 236, 0.712);
+    color: rgba(26, 5, 121, 0.568);
+}
+.afternoon{
+    background-color: rgb(15, 120, 128);
+    color: yellow;
+}
+.evening{
+    background-color: rgb(221, 115, 29);
+    color: rgb(255, 0, 0);
+}

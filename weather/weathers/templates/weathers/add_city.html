@@ -8,20 +8,23 @@
 <div class="addCityContainer center">
     <form method="POST">
         {% csrf_token %}
-        <label for="name">Miesto pavadinimas: </label>
-        <input id="name" type="text" placeholder="pvz. Vilnius" name="name">
-
-        <label for="country">Šalis:</label>
-        <input id="country" value="Lietuva" type="text" name="country">
+        <label class="inline" for="name">Gyvenvietės pavadinimas<span class="red inline">*</span>: </label>
+        <input id="name" type="text" placeholder="pvz. Elektrėnai" name="name">
 
         <br>
-        <button type="button" onclick="fetchCoordinates()" class="submit">Surasti koordinates pagal įvestą miestą</button>
+        <button type="button" onclick="fetchCoordinates()" class="submit">Surasti duomenis pagal įvestą miestą</button>
 
-        <label for="latitude">Ilguma: </label>
-        <input id="latitude" type="number" placeholder="pvz. 54.6872" name="latitude">
+        <label for="administrativeDivision">Savivaldybė: </label>
+        <input id="administrativeDivision" placeholder="pvz. Elektrėnų savivaldybė" type="text" name="administrativeDivision">
 
-        <label for="longitude">Platuma: </label>
-        <input id="longitude" type="number" placeholder="pvz. 25.2797" name="longitude">
+        <label for="country">Šalis:</label>
+        <input id="country" type="text" placeholder="Lietuva" name="country">
+
+        <label class="inline" for="latitude">Ilguma<span class="red inline">*</span>: </label>
+        <input id="latitude" type="number" step="0.00001" placeholder="pvz. 54.78666" name="latitude">
+
+        <label class="inline" for="longitude">Platuma<span class="red inline">*</span>: </label>
+        <input id="longitude" type="number" step="0.00001" placeholder="pvz. 24.67084" name="longitude">
 
         <br>
         <input class="submit" type="submit" value="Pridėti miestą">

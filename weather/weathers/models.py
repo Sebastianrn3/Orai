@@ -13,27 +13,27 @@ class Place(models.Model):
     def __str__(self):
         return self.name
 
-class Waterbody(models.Model):
-    code = models.CharField(max_length=100, unique=True)
-    name = models.CharField(max_length=200)
-    waterbody = models.CharField(max_length=200, blank=True, null=True)
-    latitude = models.FloatField()
-    longitude = models.FloatField()
+# class Waterbody(models.Model):
+#     code = models.CharField(max_length=100, unique=True)
+#     name = models.CharField(max_length=200)
+#     waterbody = models.CharField(max_length=200, blank=True, null=True)
+#     latitude = models.FloatField()
+#     longitude = models.FloatField()
 
-    def __str__(self):
-        return self.name
+#
+#     def __str__(self):
+#         return self.name
 
 
 class City(models.Model):
     name = models.CharField(max_length=50, default='', blank=True, unique=True)
     country = models.CharField(default='Lietuva', max_length=50)
+    administrative_division = models.CharField(default="Undefined", max_length=80)
     latitude = models.FloatField(default=0)
     longitude = models.FloatField(default=0)
 
     def __str__(self):
-        return f'{self.name} in {self.country}, coordination: {self.latitude}, {self.longitude}'
-
-
+        return f'{self.name} in {administrative_division},{self.country}, coordination: {self.latitude}, {self.longitude}'
 
 
 class CitySlug(models.Model):
@@ -57,3 +57,10 @@ class CityWeathers(models.Model):
 
     def __str__(self):
         return f"{self.city.name} - {self.temperature}°C, {self.wind_speed} km/h (Updated: {self.updated_at})"
+
+class Municipality(models.Model):
+    name = models.CharField(max_length=100, unique=True)
+    emblem = models.URLField()
+
+    def __str__(self):
+        return self.name

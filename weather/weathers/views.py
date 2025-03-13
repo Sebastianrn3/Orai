@@ -5,6 +5,7 @@ import requests
 
 from unidecode import unidecode
 
+from datetime import datetime, timedelta
 from .models import City, CitySlug, CityWeathers, Place
 from .forms import  CityForm
 from .helper_functions.weathers import get_weather
@@ -107,9 +108,11 @@ def get_place_data(request):
         data = {
             "latitude": place.latitude,
             "longitude": place.longitude,
+            "administrative_division": place.administrative_division,
+            "country_code": place.country_code,
         }
     except Place.DoesNotExist:
-        data = {"latitude": None, "longitude": None}
+        data = {"latitude": None, "longitude": None, "administrative_division": None, "country": None}
 
     return JsonResponse(data)
 
@@ -125,3 +128,87 @@ def weather_forecast(request):
 
 
 
+
+API_URL = "https://api.meteo.lt/v1/places/{}/forecasts/long-term"
+def get_weather_data(place_code):
+    url = API_URL.format(place_code)
+    response = requests.get(url)
+    if response.status_code == 200:
+        return response.json()
+    return None
+
+
+def city_weather(request, city_name="Vilnius"):
+
+    place = get_object_or_404(Place, name__iexact=city_name)
+    weather_data = get_weather_data(place.code)
+
+    if not weather_data or "forecastTimestamps" not in weather_data:
+        return render(request, 'weathers/test.html', {"error": "Oru nerasta."})
+
+    forecasts = weather_data["forecastTimestamps"]
+
+    if not forecasts:
+        return render(request, 'weathers/test.html', {"error": "Oru nerasta."})
+
+    current_weather = forecasts[0]
+
+    now = datetime.utcnow().replace(minute=0, second=0, microsecond=0)
+
+    available_hours = []
+    for f in forecasts:
+        forecast_time = datetime.strptime(f["forecastTimeUtc"].replace("T", " "), "%Y-%m-%d %H:%M:%S")
+        available_hours.append(forecast_time)
+
+    if not available_hours:
+        return render(request, 'weathers/test.html', {"error": "Oru nerasta."})
+
+    start_time = min(available_hours, key=lambda t: abs((t - now).total_seconds()))
+
+    hourly_forecast = [
+        f for f in forecasts
+        if datetime.strptime(f["forecastTimeUtc"].replace("T", " "), "%Y-%m-%d %H:%M:%S") >= start_time
+    ]
+    hourly_forecast = hourly_forecast[:12:2]
+
+    # ********************
+    daily_forecast = {}
+    times_of_day = {3: "night", 9: "morning", 15: "afternoon", 21: "evening"}
+    print("0")
+
+    for f in forecasts:
+        if "forecastTimeUtc" not in f or "airTemperature" not in f:
+            print("1")
+            continue
+
+
+        forecast_time = f["forecastTimeUtc"].replace("T", " ")
+        date, time = forecast_time.split(" ")
+        hour = int(time[:2])
+
+        if date not in daily_forecast:
+            daily_forecast[date] = {"night": None, "morning": None, "afternoon": None, "evening": None}
+            print("2")
+
+        if hour in times_of_day:
+
+            key = times_of_day[hour]
+            # print(f"key:{key}")
+            daily_forecast[date][key] = {
+                "temperature": f["airTemperature"],
+                "condition": f["conditionCode"],
+                "wind_speed": f["windSpeed"],
+                "humidity": f["relativeHumidity"],
+                "time": forecast_time
+            }
+
+    weekly_forecast = dict(list(daily_forecast.items())[:8])
+    # print(weekly_forecast)
+    # print("AAAA",weekly_forecast['2025-03-13']['morning']['temperature'])
+    context = {
+        "city": place.name,
+        "current_weather": current_weather,
+        "hourly_forecast": hourly_forecast,
+        "weekly_forecast": weekly_forecast,
+    }
+    return render(request, "weathers/test.html", context)
