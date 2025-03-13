@@ -1,15 +1,12 @@
 {% extends "main.html" %}
 {% block content %}
-<div>
-    {{ city.name }}
-    <br>
-    <p>Dabartinė oro temperatūra: {{ temperature }}°C</p>
-    <p>Vėjo greitis: {{ wind_speed }} km/h</p>
-</div>
+<div class="center">
+    <h2>{{ city.name }}</h2>
 <h4>Ištrinti miestą?</h4>
     <form method="POST">
         {% csrf_token %}
         <button class="submit" type="submit">Ištrinti!</button>
         <a href="{% url 'weathers:cities' %}">Atšaukti</a>
     </form>
+</div>
 {% endblock %}

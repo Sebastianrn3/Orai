@@ -5,7 +5,7 @@
         <ul>
         {% for city in cities %}
             <li>
-                <a href="{% url 'weathers:city' city.id %}">
+                <a href="{% url 'weathers:city_by_id' city.id %}">
                 {{ city.name }}<br>
                 </a>
             </li>

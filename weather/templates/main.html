@@ -9,10 +9,11 @@
 <body>
     {% include "navbar.html" %}
     <br>
-    <section class="container">
+    <section class="container wrapper">
     {% block content %}
 
     {% endblock %}
-    </section>
+
+    {% include "footer.html" %}
 </body>
 </html>

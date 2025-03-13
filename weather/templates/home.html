@@ -5,19 +5,16 @@
 <link rel="stylesheet" href="{% static 'styles/homepage.css' %}">
 <script src="{% static 'javascripts/homepage.js' %}" defer></script>
 
-<form class="homeForm center noBG">
-    <div class="inputs noBG">
+<form class="homeForm center-2">
+    <section class="inputs noBG">
         <input type="text" id="titleInput" placeholder="Antraštė" hidden>
         <input type="text" id="noteInput" placeholder="Surašyti užduotį...">
-    </div>
-    <div class="buttons">
+    </section>
+    <section class="buttons">
         <button type="submit">Įsiminti</button>
         <button id="cancelBtn" hidden>Atšaukti</button>
-    </div>
+    </section>
 </form>
-<br>
-<h2>Darbų sąrašas:</h2>
-<div class="noteContainer">
-</div>
+<section class="noteContainer"></section>
 
 {% endblock %}

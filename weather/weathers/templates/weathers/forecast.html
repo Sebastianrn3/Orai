@@ -1,24 +1,74 @@
 {% extends "main.html" %}
+{% load static %}
 
 {% block content %}
-<div class="forecast center">
-    <h2 class="center">Orų prognozė: Vilnius</h2>
-    <table class="center" border="1">
-        <tr>
-            <th>Kada</th>
-            <th>Temperatūra, °C)</th>
-            <th>Vėjo greitis, m/s</th>
-            <th>Detalės</th>
-        </tr>
-        {% for forecast in forecasts %}
-        <tr>
-            <td>{{ forecast.forecastTimeUtc }}</td>
-            <td>{{ forecast.airTemperature }}</td>
-            <td>{{ forecast.windSpeed }}</td>
-            <td>{{ forecast.conditionCode }}</td>
-        </tr>
-        {% endfor %}
-    </table>
-</div>
+<link rel="stylesheet" href="{% static 'styles/forecast-table.css' %}">
+<div>
+    <h2 class="beige">
+        {{ city.name }}
+        {% if city.administrative_division %}, {{ city.administrative_division }}{% endif %}
+        {% if city.country %}, {{ city.country }}{% endif %}
+    </h2>
 
+    <button class="submit btn-back" onclick="window.history.back()">⬅ Originalus lentelės formatas</button>
+
+    <p>Duomenų šaltinis:  Lietuvos hidrometeorologijos tarnyba (LHMT)</p>
+    <section>
+        <table class="center weeklyForecastTable">
+            <tr>
+              <th class="night">Naktis (02:00)</th>
+              <th class="morning">Rytas (08:00)</th>
+              <th class="afternoon">Diena (14:00)</th>
+              <th class="evening">Vakaras (20:00)</th>
+            </tr>
+
+        </table>
+        {% for date, times in forecasts.items %}
+        <h3 class="center">{{ date }}</h3>
+        <table class="center weeklyForecastTable">
+
+            <tr>
+              <th>Oro temp.,°C</th>
+              <th>Jaučiama t°C</th>
+              <th>Vėjo greitis, m/s</th>
+              <th>Santikinys drėgnis</th>
+              <th>Oras</th>
+            </tr>
+
+            <tr class="night">
+                <td>{{ times.night.temperature}}</td>
+                <td>{{ times.night.feels_like_temperature}}</td>
+                <td>{{ times.night.wind_speed}}</td>
+                <td>{{ times.night.humidity}}</td>
+                <td>{{ times.night.condition}}</td>
+            </tr>
+
+            <tr class="morning">
+                <td>{{ times.morning.temperature}}</td>
+                <td>{{ times.morning.feels_like_temperature}}</td>
+                <td>{{ times.morning.wind_speed}}</td>
+                <td>{{ times.morning.humidity}}</td>
+                <td>{{ times.morning.condition}}</td>
+            </tr>
+
+            <tr class="afternoon">
+                <td>{{ times.afternoon.temperature}}</td>
+                <td>{{ times.afternoon.feels_like_temperature}}</td>
+                <td>{{ times.afternoon.wind_speed}}</td>
+                <td>{{ times.afternoon.humidity}}</td>
+                <td>{{ times.afternoon.condition}}</td>
+            </tr>
+
+            <tr class="evening">
+                <td>{{ times.evening.temperature}}</td>
+                <td>{{ times.evening.feels_like_temperature}}</td>
+                <td>{{ times.evening.wind_speed}}</td>
+                <td>{{ times.evening.humidity}}</td>
+                <td>{{ times.evening.condition}}</td>
+            </tr>
+        </table>
+        {% endfor %}
+    </section>
+
+</div>
 {% endblock %}

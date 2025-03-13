@@ -1,19 +1,25 @@
 {% extends "main.html" %}
 {% block content %}
 <div class="center">
-    <h3>{{ city.name }}, {{ city.administrative_division }}</h3>
-    <p>Dabartinė oro temperatūra: {{ temperature }}°C</p>
-    <p>Vėjo greitis: {{ wind_speed }} km/h</p>
+    <h2 class="beige">
+        {{ city.name }}
+        {% if city.administrative_division %}, {{ city.administrative_division }}{% endif %}
+        {% if city.country %}, {{ city.country }}{% endif %}
+    </h2>
+    <p class="beige">Dabartinė oro temperatūra: {{ temperature }}°C</p>
+    <p class="beige">Vėjo greitis: {{ wind_speed }} km/h</p>
+    <p>Duomenų šaltinis: open-meteo.com</p>
 
-    <a href="{% url 'weathers:edit_city' city.id %}">Redaguoti</a>
-    <a href="{% url 'weathers:delete_city' city.id %}">Ištrinti miestą</a>
-</div>
-<div class="forecast center">
-    <h2 class="center">Orų prognozė: {{ city.name }}</h2>
+    <a class="border" href="{% url 'weathers:edit_city' city.id %}">Redaguoti</a>
+    <a class="border" href="{% url 'weathers:delete_city' city.id %}">Ištrinti miestą</a>
+    <a class="border" href="{% url 'weathers:forecast' city.name %}">Naujas lentelės formatas</a>
+
+    <br>
+    <p> </p>
     <table class="center" border="1">
         <tr>
-            <th>Kada</th>
-            <th>Temperatūra, °C)</th>
+            <th>Laikas UTC+0</th>
+            <th>Temperatūra, °C</th>
             <th>Vėjo greitis, m/s</th>
             <th>Detalės</th>
         </tr>

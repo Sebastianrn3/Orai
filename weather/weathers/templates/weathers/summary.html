@@ -7,22 +7,18 @@
     <table border="1">
         <tr>
             <th>Miestas</th>
-            <th>Ilguma, platuma</th>
-
-
+            <th>Ilguma</th>
+            <th>Platuma</th>
             <th>Temperatūra</th>
             <th>Vėjo greitis</th>
             <th>Atnaujinta</th>
-
             <th>Veiksmai</th>
         </tr>
         {% for city in cities %}
         <tr>
-            <td>
-                <a href="{% url 'weathers:city' city.id %}">{{ city.name }}</a>
-            </td>
-            <td>{{ city.latitude }}, {{ city.longitude }}</td>
-
+            <td><a href="{% url 'weathers:city_by_id' city.id %}" class="darkColor">{{ city.name }}</a></td>
+            <td>{{ city.latitude|floatformat:2 }}</td>
+            <td>{{ city.longitude|floatformat:2 }}</td>
             {% with weather=city.cityweathers_set.last %}
             <td>{{ weather.temperature }}°C</td>
             <td>{{ weather.wind_speed }} km/h</td>
@@ -32,7 +28,7 @@
             <td class="cityButtons">
                 <form action="{% url 'weathers:delete_city' city.id %}" method="POST">
                     {% csrf_token %}
-                    <button class="submit" type="submit">Šalinti</button>
+                    <button class="submit" type="submit" onclick='return confirm("Ištrinti?");'>Šalinti</button>
                 </form>
                 <a href="{% url 'weathers:edit_city' city.id %}">
                     <button class="submit" type="button">Redaguoti</button>
@@ -40,7 +36,7 @@
                 <a href="{% url 'weathers:update_weather' city.id %}">
                     <button class="submit" type="button">Atnaujinti</button>
                 </a>
-                <a href="{% url 'weathers:city' city.id %}">
+                <a href="{% url 'weathers:city_by_id' city.id %}">
                     <button class="submit" type="button">Plačiau</button>
                 </a>
             </td>

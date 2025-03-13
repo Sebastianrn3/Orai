@@ -4,4 +4,4 @@ from .models import City
 class CityForm(forms.ModelForm):
     class Meta:
         model = City
-        fields = ["name", "country", "latitude", "longitude"]
+        fields = ["name", "administrative_division", "country", "latitude", "longitude"]
