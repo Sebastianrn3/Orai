@@ -13,6 +13,4 @@ urlpatterns = [
     path("update_weather/<int:pk>/", views.update_weather, name="update_weather"),
     path("get_place_data/", views.get_place_data, name="get_place_data"),
     path("<int:pk>", views.detail, name="city_by_id"),
-
-    # path("<slug:slug>/", views.detail, name="city"),
 ]

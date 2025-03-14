@@ -41,18 +41,6 @@ class CityWeathers(models.Model):
     def __str__(self):
         return f"{self.city.name} - {self.temperature}°C, {self.wind_speed} km/h (Updated: {self.updated_at})"
 
-
-
-
-#konstruojama
-class Municipality(models.Model):
-    name = models.CharField(max_length=100, unique=True)
-    emblem = models.URLField()
-
-    def __str__(self):
-        return self.name
-
-#rekonstruojama
 class CitySlug(models.Model):
     city = models.OneToOneField(City, on_delete=models.CASCADE)
     slug = models.SlugField()

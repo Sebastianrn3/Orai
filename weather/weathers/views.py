@@ -14,7 +14,6 @@ API_URL = "https://api.meteo.lt/v1/places/{}/forecasts/long-term"
 def cities(request):
     return render(request=request, template_name="weathers/cities.html", context={"cities": City.objects.all()})
 
-
 def detail(request, slug = None, pk = None):
     if slug:
         city_slug = get_object_or_404(CitySlug, slug=slug)
@@ -37,7 +36,6 @@ def detail(request, slug = None, pk = None):
 
     return render(request=request, template_name="weathers/city.html", context=context)
 
-
 def update_weather(request, pk, temperature = None, wind_speed = None, redirection = True):
     city = get_object_or_404(City, pk=pk)
 
@@ -51,8 +49,6 @@ def update_weather(request, pk, temperature = None, wind_speed = None, redirecti
     if redirection:
         return redirect("weathers:summary")
 
-
-
 def add_city(request):
     if request.method == "POST":
         form = CityForm(request.POST)
@@ -63,7 +59,6 @@ def add_city(request):
         form = CityForm()
 
     return render(request, "weathers/add_city.html", {"form": form})
-
 
 def edit_city(request, pk):
     city = get_object_or_404(City, pk=pk)
@@ -86,10 +81,8 @@ def delete_city(request, pk):
         return redirect("weathers:cities")
     return render(request=request, template_name="weathers/city_delete_confirm.html", context={"city":city})
 
-
 def summary(request):
     return render(request, "weathers/summary.html", {"cities": City.objects.all()})
-
 
 def get_place_data(request):
     city_name = request.GET.get("name", "").strip()
@@ -107,8 +100,7 @@ def get_place_data(request):
 
     return JsonResponse(data)
 
-
-def city_weather(request, city_name="Vildnius"):
+def city_weather(request, city_name="Vilnius"):
     times_of_day = {0: "night", 6: "morning", 12: "afternoon", 18: "evening"}
 
     def get_weather_data(place_code):
