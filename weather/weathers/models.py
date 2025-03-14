@@ -15,10 +15,15 @@ class Place(models.Model):
 
 class City(models.Model):
     name = models.CharField(max_length=50, default='', blank=True, unique=True)
-    country = models.CharField(default='Lietuva', max_length=50)
-    administrative_division = models.CharField(default="Undefined", max_length=80)
+    country = models.CharField(max_length=50, blank=True, null=True)
+    administrative_division = models.CharField(max_length=80, blank=True, null=True)
     latitude = models.FloatField(default=0)
     longitude = models.FloatField(default=0)
+
+    def save(self):
+        if not self.name:
+            self.name = f"{self.latitude}, {self.longitude}"
+        super().save()
 
     class Meta:
         ordering = ["name"]

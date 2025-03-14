@@ -93,8 +93,6 @@ def summary(request):
 
 def get_place_data(request):
     city_name = request.GET.get("name", "").strip()
-    # normalized_name = unidecode(city_name.lower())
-    # print(f"{normalized_name}")
 
     try:
         place = Place.objects.get(name__iexact=city_name)
